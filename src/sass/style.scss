@@ -94,7 +94,7 @@ body {
 		height: 100%;
 		box-shadow: 0 0 10px;
 		perspective: 10cm;
-		background-image: url('./dist/img/paper.jpg');
+		background-image: url('../../dist/img/paper.jpg');
 		perspective-origin: right;
 		color: rgba(0, 0, 0, 0);
 		opacity: 0;
@@ -109,7 +109,7 @@ body {
 		height: 100%;
 		box-shadow: 0 0 10px;
 		perspective: 10cm;
-		background-image: url('./dist/img/paper.jpg');
+		background-image: url('../../dist/img/paper.jpg');
 		// background-color: rgba(0,0,0,0);
 		perspective-origin: left;
 		color: rgba(0, 0, 0, 0);
@@ -141,7 +141,7 @@ body {
 	}
 
 	&__background-cover {
-		background-image: url('./dist/img/cover.jpg');
+		background-image: url('../../dist/img/cover.jpg');
 		background-position: center;
 		background-size: cover;
 		opacity: 1;
