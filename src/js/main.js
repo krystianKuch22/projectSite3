@@ -2,121 +2,147 @@ const book = document.querySelector('.book');
 const allPages = document.querySelectorAll('.book__page');
 const btnLeft = document.querySelector('.book__btn-left');
 const btnRight = document.querySelector('.book__btn-right');
-
-const sliderBoxWidth = 25;
-const sliderSpeed = 3000;
+const btnOpen = document.querySelector('.book__open');
 
 let index = 0;
 let side = 1;
 
 let activePage = allPages[index];
 
-console.log(activePage);
-console.log(activePage.firstElementChild);
-
-btnLeft.classList.add('disable');
-
 const handleSlider = () => {
 	index++;
 };
 
-const changePage = () => {
-	if (index > 0 && index < allPages.length - 1) {
-		book.style.transform = 'translate(0, -50%)';
-	} else if (index <= 0) {
-		book.style.transform = 'translate(-50%, -50%)';
-	}
+const showButtons = (isActive) => {
+	btnLeft.disabled = !isActive;
+	btnRight.disabled = !isActive;
 
-	if (index == 0) {
-		btnLeft.classList.toggle('disable');
-		btnLeft.disabled = true;
-	} else if (index == allPages.length - 1) {
-		btnRight.disabled = true;
-	} else {
-		btnRight.disabled = false;
-	}
+	btnLeft.classList.toggle('active');
+	btnRight.classList.toggle('active');
 
-	if (index > 0)
-		setTimeout(() => {
-			btnLeft.disabled = false;
-			btnLeft.classList.remove('disable');
-		}, 1000);
-
-	if (side > 0) {
-		activePage.firstElementChild.style.transform = `rotateY(-180deg)`;
-		activePage.lastElementChild.style.transform = `rotateY(-180deg)`;
-
-		setTimeout(() => {
-			activePage.firstElementChild.classList.toggle('active');
-			// activePage.firstElementChild.classList.toggle('op-off')
-
-			activePage.lastElementChild.classList.toggle('active');
-			// activePage.lastElementChild.classList.toggle('op-off')
-
-			activePage = allPages[index];
-
-			activePage.firstElementChild.classList.toggle('active');
-		}, 400);
-	} else {
-		// previousPage = allPages[(index <= 0 ? 0 : index - 1)]
-
-		activePage = allPages[index];
-		console.log('previous');
-		console.log(activePage);
-
-		activePage.firstElementChild.style.transform = `rotateY(0)`;
-		activePage.lastElementChild.style.transform = `rotateY(0)`;
-
-		// activePage = allPages[index]
-
-		setTimeout(() => {
-			activePage = allPages[index + 1];
-
-			activePage.firstElementChild.classList.toggle('active');
-
-			activePage = allPages[index];
-
-			activePage.lastElementChild.classList.toggle('active');
-
-			// activePage.firstElementChild.classList.toggle('op-off')
-			activePage.firstElementChild.classList.toggle('active');
-		}, 400);
-	}
-
-	if (index > allPages.length - 1) {
-		index = 0;
-	} else if (index < 0) {
-		index = allPages.length - 1;
-	}
-
-	console.log(activePage);
+	btnOpen.disabled = isActive;
+	btnOpen.classList.toggle('active');
 };
 
-const handleRightArrow = () => {
-	if (!btnRight.disabled) {
-		if (side < 0) side *= -1;
-		index++;
-		changePage();
-		btnRight.disabled = true;
-	}
+const changeNextPage = () => {
+	activePage.style.transform = 'rotateY(-180deg)'
 
-	if (index >= allPages.length - 1) {
-		btnRight.disabled = true;
-	} else setTimeout(() => (btnRight.disabled = false), 1000);
+	activePage.previousElementSibling.classList.toggle('active')
+	activePage.previousElementSibling.lastElementChild.classList.toggle('active')
+
+	activePage.firstElementChild.classList.toggle('active')
+	activePage.lastElementChild.classList.toggle('active')
+
+	activePage.firstElementChild.classList.remove('opacity-delay')
+
+	activePage = allPages[index]
+
+	activePage.classList.toggle('active')
+	activePage.firstElementChild.classList.toggle('active')
+
+	activePage.firstElementChild.classList.remove('opacity-delay')
+
+
+}
+
+const handleRightArrow = () => {
+	index++;
+	
+	changeNextPage()
+
+	console.log(index);
+	
+	if(index >= allPages.length - 1){
+		btnRight.disabled = true
+		btnRight.classList.toggle('active')
+	}
+};
+
+const changePagePrevious = () => {
+	activePage.previousElementSibling.style.transform = 'rotateY(0)'
+
+	activePage.classList.toggle('active')
+	activePage.firstElementChild.classList.toggle('active')
+
+	activePage = allPages[index]
+
+	activePage.lastElementChild.classList.toggle('active')
+	activePage.firstElementChild.classList.toggle('active')
+
+	activePage.firstElementChild.classList.add('opacity-delay')
+
+	activePage.previousElementSibling.classList.toggle('active')
+	activePage.previousElementSibling.lastElementChild.classList.toggle('active')
 };
 
 const handleLeftArrow = () => {
-	if (!btnLeft.disabled) {
-		if (side > 0) side *= -1;
-		index--;
-		changePage();
-		btnLeft.disabled = true;
+
+	console.log(--index);
+
+	if(index < allPages.length - 1){
+		btnRight.disabled = false
+		btnRight.classList.add('active')
 	}
 
 	if (index <= 0) {
-		btnLeft.disabled = true;
-	} else setTimeout(() => (btnLeft.disabled = false), 1000);
+		btnLeft.classList.add('on-first-page-btn');
+		btnRight.classList.add('on-first-page-btn');
+		btnOpen.classList.add('opacity-delay-open-btn')
+		activePage.previousElementSibling.classList.add('on-first-page');
+		console.log(activePage.previousElementSibling);
+		activePage.classList.add('on-first-page');
+		activePage.previousElementSibling.firstElementChild.classList.add(
+			'on-first-page'
+		);
+		showButtons(false);
+		activePage.classList.toggle('active')
+		activePage.firstElementChild.classList.toggle('active')
+
+		activePage = allPages[index]
+
+		activePage.style.transform = 'rotateY(0)'
+
+		activePage.lastElementChild.classList.toggle('active')
+		activePage.firstElementChild.classList.toggle('active')
+
+		setTimeout(() => {
+			book.style.transform = 'translate(-50%, -50%)';
+		}, 1000);
+	}else{
+		
+		changePagePrevious();
+	}
+
+};
+
+const handleOpenBtn = () => {
+	btnLeft.classList.remove('on-first-page-btn');
+	btnRight.classList.remove('on-first-page-btn');
+	btnOpen.classList.remove('opacity-delay-open-btn')
+	activePage.classList.remove('on-first-page');
+	activePage.firstElementChild.classList.remove('on-first-page');
+	activePage.nextElementSibling.classList.remove('on-first-page');
+
+	index++;
+	activePage.style.transform = 'rotateY(-180deg)';
+	book.style.transform = 'translate(0 , -50%)';
+
+	showButtons(true);
+
+	console.log(activePage);
+
+	setTimeout(() => {
+
+		activePage.firstElementChild.classList.toggle('active')
+		activePage.lastElementChild.classList.toggle('active')
+
+		activePage = allPages[index]
+
+		activePage.classList.toggle('active')
+		activePage.firstElementChild.classList.toggle('active')
+	}, 500);
 };
 
 btnLeft.addEventListener('click', handleLeftArrow);
 btnRight.addEventListener('click', handleRightArrow);
+btnOpen.addEventListener('click', handleOpenBtn);

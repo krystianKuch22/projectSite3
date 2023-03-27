@@ -25,63 +25,69 @@
 
     <main class="book">
 
-        <header class="book__page book__header">
-            <div class="book__page-up active">
-                <div class="book__content">
-                    <h1 class="book__title">Great page!</h1>
-                </div>
-                <div class="book__background book__background-cover"></div>
+        <header class="book__page active">
+            <div class="book__background-cover active">
+                <h1 class="book__title">Dev story</h1>
             </div>
             <div class="book__page-down">
                 <div class="book__content-down">
-                    <h2 class="book__page-title">page 1</h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione cum nisi, nostrum cupiditate neque expedita impedit maxime quia facilis culpa doloribus quos numquam deleniti placeat rerum. Harum, vitae. Eveniet tempora animi odit odio quisquam placeat inventore accusantium magni, non mollitia!</p>
+                    <h2 class="section-title">Long long time ago...</h2>
+                    <hr class="deco-line">
+                    <img src="../dist/img/about.jpg" alt="Photo of my self" class="book__aboutme-img">
+                    <hr class="deco-line">
+                    <p class="book__text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis quae, provident ut asperiores corrupti</p>
                 </div>
-                <div class="book__background-down"></div>
             </div>
         </header>
 
         <section class="book__page">
             <div class="book__page-up">
-                <h2 class="book__page-title">page 2</h2>
+                <div class="book__content">
+                    <h2 class="section-title">What kind of magic i know</h2>
+                    <hr class="deco-line">
+                    <p class="book__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita ullam possimus vitae optio quas ipsum dignissimos reprehenderit cupiditate aliquam. Soluta vel nobis dolorem odio voluptatibus minima temporibus pariatur cumque neque?</p>
+                </div>
             </div>
-            <div class="book__background"></div>
             <div class="book__page-down">
                 <div class="book__content-down">
-                    <h2 class="book__page-title">page 3</h2>
+                    <h2 class="section-title">My Work</h2>
+                    <hr class="deco-line">
+                    <ul class="book__work-box">
+                        <li class="book__work book__text"><button class="book__work-btn">Work 1</button></li>
+                    </ul>
                 </div>
-                <div class="book__background-down"></div>
             </div>
         </section>
 
         <section class="book__page">
             <div class="book__page-up">
-                <h2 class="book__page-title">page 4</h2>
+                <div class="book__content">
+                    <h2>page 4</h2>
+                </div>
             </div>
-            <div class="book__background"></div>
             <div class="book__page-down">
                 <div class="book__content-down">
                     <h2 class="book__page-title">page 5</h2>
                 </div>
-                <div class="book__background-down"></div>
             </div>
         </section>
+
         <section class="book__page">
             <div class="book__page-up">
-                <h2 class="book__page-title">page 6</h2>
-            </div>
-            <div class="book__background"></div>
-            <div class="book__page-down">
-                <div class="book__content-down">
-                    <h2 class="book__page-title">page 7</h2>
+                <div class="book__content">
+                    <h2 class="book__page-title">page 6</h2>
                 </div>
-                <div class="book__background-down"></div>
+            </div>
+            <div class="book__page-down">
             </div>
         </section>
-        <button disabled="true" class="book__btn book__btn-left"><img src="dist/img/icons/arrow.png" alt="An Arrow left" class="book__btn--arrow"></button>
-        <button class="book__btn book__btn-right"><img src="dist/img/icons/arrow.png" alt="An Arrow right" class="book__btn--arrow"></button>
+        <button disabled="true" class="book__btn book__btn-left"><img src="dist/img/icons/arrow.png" alt="An Arrow left"
+                class="book__btn--arrow"></button>
+        <button disabled="true" class="book__btn book__btn-right"><img src="dist/img/icons/arrow.png"
+                alt="An Arrow right" class="book__btn--arrow"></button>
+        <button class="book__open active">open</button>
     </main>
-    
+
     <script src="dist/js/main.min.js"></script>
 </body>
 
