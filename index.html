@@ -53,7 +53,8 @@
                     <h2 class="section-title">My Work</h2>
                     <hr class="deco-line">
                     <ul class="book__work-box">
-                        <li class="book__work book__text"><button class="book__work-btn">Work 1</button></li>
+                        <li class="book__text"><button value="0" class="book__work-btn">Work 1</button></li>
+                        <li class="book__text"><button value="1" class="book__work-btn">Work 2</button></li>
                     </ul>
                 </div>
             </div>
@@ -62,7 +63,20 @@
         <section class="book__page">
             <div class="book__page-up">
                 <div class="book__content">
-                    <h2>page 4</h2>
+                    <div class="book__work">
+                        <h2 class="section-title">Work 1</h2>
+                        <hr class="deco-line">
+                        <a href="#" class="book__work-link"><img src="dist/img/work_1.jpg" alt="Screenshot of first work" class="book__work-img"></a>
+                        <hr class="deco-line">
+                        <p class="book__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur aut quis, laudantium quibusdam sequi nulla! Molestias vero quam excepturi reiciendis.</p>
+                    </div>
+                    <div class="book__work">
+                        <h2 class="section-title">Work 2</h2>
+                        <hr class="deco-line">
+                        <a href="#" class="book__work-link"><img src="dist/img/work_2.jpg" alt="Screenshot of second work" class="book__work-img"></a>
+                        <hr class="deco-line">
+                        <p class="book__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur aut quis, laudantium quibusdam sequi nulla! Molestias vero quam excepturi reiciendis ddddd.</p>
+                    </div>
                 </div>
             </div>
             <div class="book__page-down">
@@ -81,9 +95,9 @@
             <div class="book__page-down">
             </div>
         </section>
-        <button disabled="true" class="book__btn book__btn-left"><img src="dist/img/icons/arrow.png" alt="An Arrow left"
+        <button class="book__btn book__btn-left" disabled><img src="dist/img/icons/arrow.png" alt="An Arrow left"
                 class="book__btn--arrow"></button>
-        <button disabled="true" class="book__btn book__btn-right"><img src="dist/img/icons/arrow.png"
+        <button class="book__btn book__btn-right" disabled><img src="dist/img/icons/arrow.png"
                 alt="An Arrow right" class="book__btn--arrow"></button>
         <button class="book__open active">open</button>
         

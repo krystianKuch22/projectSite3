@@ -3,6 +3,8 @@ const allPages = document.querySelectorAll('.book__page');
 const btnLeft = document.querySelector('.book__btn-left');
 const btnRight = document.querySelector('.book__btn-right');
 const btnOpen = document.querySelector('.book__open');
+const btnsWorks = document.querySelectorAll('.book__work-btn')
+const works = document.querySelectorAll('.book__work')
 
 let index = 0;
 let side = 1;
@@ -143,6 +145,13 @@ const handleOpenBtn = () => {
 	}, 500);
 };
 
+const handleWorkBtn = e => {
+
+	works.forEach(work => work.classList.remove('active'))
+	works[e.target.value].classList.add('active')
+}
+
 btnLeft.addEventListener('click', handleLeftArrow);
 btnRight.addEventListener('click', handleRightArrow);
 btnOpen.addEventListener('click', handleOpenBtn);
+btnsWorks.forEach(btn => btn.addEventListener('click', handleWorkBtn))
